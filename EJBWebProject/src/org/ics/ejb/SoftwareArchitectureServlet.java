@@ -37,7 +37,7 @@ public class SoftwareArchitectureServlet extends HttpServlet {
 		out.println("<meta charset=\"ISO-8859-1\">");
 		out.println("</head><body>");
 		
-		out.println("<h1>Servlet works!!</h1>");
+		out.println("<h1>Servlet worksX2!!</h1>");
 		out.println("</body></html>");
 	}
 
