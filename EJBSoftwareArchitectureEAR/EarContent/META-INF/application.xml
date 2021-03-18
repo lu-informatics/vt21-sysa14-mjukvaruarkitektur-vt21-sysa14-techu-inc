@@ -10,4 +10,10 @@
       <context-root>EJBWebProject</context-root>
     </web>
   </module>
+  <module>
+    <web>
+      <web-uri>EjbWebProject.war</web-uri>
+      <context-root>EjbWebProject</context-root>
+    </web>
+  </module>
 </application>
