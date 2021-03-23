@@ -66,13 +66,21 @@ public class SoftwareArchitectureServlet extends HttpServlet {
 			out.print("<p>" + building.getAddress() + "</p>");	
 			building = facade.findByAddress("Ole Römers Väg");
 
-//			out.print("<h2>**** MovieEAO Delete ****</h2>");
-//			facade.deleteBuilding("Trelleborg");
-			
+			Office office = new Office();
+			OfficeId officeId = new OfficeId();
+			officeId.setBuildingAddress(building.getAddress());
+			office.setOfficeId(officeId);
+			office.setTemperatureSetting(23);
+			office.setVentilationSetting("V4");
+			//facade.createOffice(office);
+
+			//			out.print("<h2>**** MovieEAO Delete ****</h2>");
+			//			facade.deleteBuilding("Trelleborg");
+
 			out.println("<p>The building:" + building.getAddress()+" has the following offices:<br>");
 			for(Office o1: building.getOffices() ) {
-				out.println("<p>Office: "+ o1.getOfficeId().getOfficeNumber()+ " ventilation setting: "+ o1.getVentilationSetting()+"</p>");}
-			
+				out.println("<p>Office: "+ o1.getOfficeId().getOfficeNumber()+ " ventilation setting: "+ o1.getVentilationSetting()+"</p>");
+			}
 		} else {
 			out.print("<p>" + "Filmen finns inte." + "</p>");
 		}
