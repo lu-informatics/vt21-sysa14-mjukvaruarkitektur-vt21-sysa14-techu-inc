@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +18,16 @@ public class Office implements Serializable{
 	private int temperatureSetting;
 	private String ventilationSetting;
 	private Building building;
-	
+	private int ID;
+
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", nullable = false, updatable = false, insertable = false)
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
 	
 	@EmbeddedId
 	public OfficeId getOfficeId() {
