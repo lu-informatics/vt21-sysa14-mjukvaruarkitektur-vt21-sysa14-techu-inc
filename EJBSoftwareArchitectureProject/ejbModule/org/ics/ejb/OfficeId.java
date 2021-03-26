@@ -6,11 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
 
 @Embeddable
-@SequenceGenerator(name="ID_SEQUENCE", allocationSize=1)
 public class OfficeId implements Serializable{
 	private String buildingAddress;
 	private String officeNumber;
@@ -25,7 +22,6 @@ public class OfficeId implements Serializable{
 
 
 	@Column(name="buildingAddress", nullable = false)
-	@NotNull
 	public String getBuildingAddress() {
 		return buildingAddress;
 	}
@@ -33,9 +29,9 @@ public class OfficeId implements Serializable{
 		this.buildingAddress = buildingAddress;
 	}
 	
+	
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="officeNumber", insertable = false, nullable = false)
-	@NotNull
 	public String getOfficeNumber() {
 		return officeNumber;
 	}

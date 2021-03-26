@@ -73,8 +73,18 @@ public class SoftwareArchitectureServlet extends HttpServlet {
 			office.setTemperatureSetting(23);
 			office.setVentilationSetting("V4");
 			//facade.createOffice(office);
+			
+			office = facade.findByOfficeId("Ole Römers Väg", "O000030");
+			office.setTemperatureSetting(20);
+			office.setVentilationSetting("V3");
+			facade.updateOffice(office);
+			out.print("<h4>Updated office.</h4>");
 
-			//			out.print("<h2>**** MovieEAO Delete ****</h2>");
+			
+			facade.deleteOffice("Ole Römers Väg", "O000030");
+			out.print("<h4>Deleted office.</h4>");
+
+			//			out.print("<h2>**** Building Delete ****</h2>");
 			//			facade.deleteBuilding("Trelleborg");
 
 			out.println("<p>The building:" + building.getAddress()+" has the following offices:<br>");
