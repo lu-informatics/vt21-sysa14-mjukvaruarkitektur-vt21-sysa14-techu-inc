@@ -55,41 +55,42 @@ public class SoftwareArchitectureServlet extends HttpServlet {
 			facade.createBuilding(b);
 			out.print("<h4>Created building.</h4>");
 		}
-		Building building = facade.findByAddress("Trelleborg");
+		Building building = facade.findByAddress("Göteborg");
 		if(building != null) {
 			out.print("<p>" + building.getAddress() + " </p>");
-			building.setAddress("Bohuslän");
+			building.setAddress("Jokkmokk");
 			facade.updateBuilding(building);
 			out.print("<h4>Updated building.</h4>");
 			
-			building = facade.findByAddress("Bohuslän");
+			building = facade.findByAddress("Borås");
 			out.print("<p>" + building.getAddress() + "</p>");	
-			building = facade.findByAddress("Ole Römers Väg");
+			out.print("<h4>Found building.</h4>");
+
 
 			Office office = new Office();
-			OfficeId officeId = new OfficeId();
-			officeId.setBuildingAddress(building.getAddress());
-			office.setOfficeId(officeId);
+			office.setBuilding(building);
 			office.setTemperatureSetting(23);
 			office.setVentilationSetting("V4");
-			//facade.createOffice(office);
+			facade.createOffice(office);
+			out.print("<h4>Created office.</h4>");
+
 			
-			office = facade.findByOfficeId("Ole Römers Väg", "O000030");
+			office = facade.findByOfficeId("O000001");
 			office.setTemperatureSetting(20);
 			office.setVentilationSetting("V3");
 			facade.updateOffice(office);
 			out.print("<h4>Updated office.</h4>");
 
 			
-			facade.deleteOffice("Ole Römers Väg", "O000030");
-			out.print("<h4>Deleted office.</h4>");
+			//facade.deleteOffice("O000031");
+			//out.print("<h4>Deleted office.</h4>");
 
 			//			out.print("<h2>**** Building Delete ****</h2>");
 			//			facade.deleteBuilding("Trelleborg");
 
 			out.println("<p>The building:" + building.getAddress()+" has the following offices:<br>");
 			for(Office o1: building.getOffices() ) {
-				out.println("<p>Office: "+ o1.getOfficeId().getOfficeNumber()+ " ventilation setting: "+ o1.getVentilationSetting()+"</p>");
+				out.println("<p>Office: "+ o1.getOfficeNumber() + " ventilation setting: "+ o1.getVentilationSetting() + " temperature setting: " + o1.getTemperatureSetting() +  " degrees celsius.</p>");
 			}
 		} else {
 			out.print("<p>" + "Filmen finns inte." + "</p>");
