@@ -5,7 +5,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.ics.ejb.Office;
-import org.ics.ejb.OfficeId;
 
 /**
  * Session Bean implementation class OfficeEAOImpl
@@ -21,9 +20,8 @@ public class OfficeEAOImpl implements OfficeEAOLocal {
     public OfficeEAOImpl() {
         // TODO Auto-generated constructor stub
     }
-    public Office findByOfficeId(String buildingAddress, String officeNumber){
-    	OfficeId id = new OfficeId(buildingAddress, officeNumber);
-    	return em.find(Office.class, id);
+    public Office findByOfficeId(String officeNumber){
+    	return em.find(Office.class, officeNumber);
     	}
     public Office createOffice(Office office) {
     	em.persist(office);
@@ -33,8 +31,8 @@ public class OfficeEAOImpl implements OfficeEAOLocal {
     	em.merge(office);
     	return office;
     	}
-    public void deleteOffice(String buildingAddress, String officeNumber) {
-    	Office office = this.findByOfficeId(buildingAddress, officeNumber);
+    public void deleteOffice(String officeNumber) {
+    	Office office = this.findByOfficeId(officeNumber);
     	if(office != null) {
     		em.remove(office);
     		}

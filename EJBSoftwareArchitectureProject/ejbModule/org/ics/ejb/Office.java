@@ -56,8 +56,7 @@ public class Office implements Serializable{
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="buildingAddress", referencedColumnName="address",
-			nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name="buildingAddress", referencedColumnName="address")
 	public Building getBuilding() {
 		return building;
 	}

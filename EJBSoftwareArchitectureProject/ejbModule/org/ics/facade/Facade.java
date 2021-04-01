@@ -41,8 +41,8 @@ public class Facade implements FacadeLocal {
 		buildingEAO.deleteBuilding(address);
 	}
 
-	public Office findByOfficeId(String buildingAddress, String officeNumber) {
-		return officeEAO.findByOfficeId(buildingAddress, officeNumber);
+	public Office findByOfficeId(String officeNumber) {
+		return officeEAO.findByOfficeId(officeNumber);
 	}
 
 	public Office createOffice(Office office) {
@@ -53,8 +53,8 @@ public class Facade implements FacadeLocal {
 		return officeEAO.updateOffice(office);
 	}
 
-	public void deleteOffice(String buildingAddress, String officeNumber) {
-		officeEAO.deleteOffice(buildingAddress, officeNumber);
+	public void deleteOffice(String officeNumber) {
+		officeEAO.deleteOffice(officeNumber);
 	}
 
 }

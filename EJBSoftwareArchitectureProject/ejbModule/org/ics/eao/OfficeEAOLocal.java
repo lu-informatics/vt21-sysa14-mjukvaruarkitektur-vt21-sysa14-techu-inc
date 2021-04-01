@@ -6,8 +6,8 @@ import org.ics.ejb.Office;
 
 @Local
 public interface OfficeEAOLocal {
-	public Office findByOfficeId(String buildingAddress, String officeNumber);
+	public Office findByOfficeId(String officeNumber);
     public Office createOffice(Office office);
     public Office updateOffice(Office office);
-    public void deleteOffice(String buildingAddress, String officeNumber);
+    public void deleteOffice(String officeNumber);
 }
