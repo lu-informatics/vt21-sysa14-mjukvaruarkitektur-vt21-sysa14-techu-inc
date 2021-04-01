@@ -3,10 +3,10 @@ package org.ics.ejb;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,13 +14,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Office")
 public class Office implements Serializable{
-	private OfficeId officeId;
+	private String officeNumber;
 	private int temperatureSetting;
 	private String ventilationSetting;
 	private Building building;
 	private int ID;
 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, updatable = false, insertable = false)
 	public int getID() {
 		return ID;
@@ -29,12 +29,14 @@ public class Office implements Serializable{
 		ID = iD;
 	}
 	
-	@EmbeddedId
-	public OfficeId getOfficeId() {
-		return officeId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="officeNumber", insertable = false, nullable = false)
+	public String getOfficeNumber() {
+		return officeNumber;
 	}
-	public void setOfficeId(OfficeId officeId) {
-		this.officeId = officeId;
+	public void setOfficeNumber(String officeNumber) {
+		this.officeNumber = officeNumber;
 	}
 	
 	@Column(name = "temperatureSetting")
