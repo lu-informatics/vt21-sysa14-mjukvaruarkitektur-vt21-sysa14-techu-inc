@@ -1,5 +1,7 @@
 package org.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import org.ics.ejb.Office;
@@ -10,4 +12,5 @@ public interface OfficeEAOLocal {
     public Office createOffice(Office office);
     public Office updateOffice(Office office);
     public void deleteOffice(String officeNumber);
+    public List<Office> getAllOffices();
 }

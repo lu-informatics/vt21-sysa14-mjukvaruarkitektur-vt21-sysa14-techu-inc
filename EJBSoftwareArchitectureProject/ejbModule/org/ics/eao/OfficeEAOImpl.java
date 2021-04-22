@@ -1,9 +1,13 @@
 package org.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
+import org.ics.ejb.Building;
 import org.ics.ejb.Office;
 
 /**
@@ -37,5 +41,9 @@ public class OfficeEAOImpl implements OfficeEAOLocal {
     		em.remove(office);
     		}
     	}
+    public List<Office> getAllOffices(){
+    	TypedQuery<Office> tq = em.createNamedQuery("Office.findAll", Office.class);
+    	return tq.getResultList();
+    }
 
 }
