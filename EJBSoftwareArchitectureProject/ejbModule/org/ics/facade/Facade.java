@@ -1,5 +1,7 @@
 package org.ics.facade;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -40,9 +42,12 @@ public class Facade implements FacadeLocal {
 	public void deleteBuilding(String address) {
 		buildingEAO.deleteBuilding(address);
 	}
+	public List<Building> getAllBuildings(){
+		return buildingEAO.getAllBuildings();
+	}
 
-	public Office findByOfficeId(String buildingAddress, String officeNumber) {
-		return officeEAO.findByOfficeId(buildingAddress, officeNumber);
+	public Office findByOfficeId(String officeNumber) {
+		return officeEAO.findByOfficeId(officeNumber);
 	}
 
 	public Office createOffice(Office office) {
@@ -53,8 +58,12 @@ public class Facade implements FacadeLocal {
 		return officeEAO.updateOffice(office);
 	}
 
-	public void deleteOffice(String buildingAddress, String officeNumber) {
-		officeEAO.deleteOffice(buildingAddress, officeNumber);
+	public void deleteOffice(String officeNumber) {
+		officeEAO.deleteOffice(officeNumber);
 	}
+	public List<Office> getAllOffices(){
+		return officeEAO.getAllOffices();
+	}
+	
 
 }

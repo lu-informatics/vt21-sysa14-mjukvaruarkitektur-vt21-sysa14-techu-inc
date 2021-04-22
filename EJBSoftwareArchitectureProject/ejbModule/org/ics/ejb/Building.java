@@ -7,10 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name="Building.findAll", query = "SELECT b FROM Building b")
+})
 @Table(name="Building")
 public class Building implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -1,5 +1,7 @@
 package org.ics.eao;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
 import org.ics.ejb.Building;
@@ -10,4 +12,5 @@ public interface BuildingEAOLocal {
     public Building createBuilding(Building building);
     public Building updateBuilding(Building building);
     public void deleteBuilding(String address);
+    public List<Building> getAllBuildings();
 }
