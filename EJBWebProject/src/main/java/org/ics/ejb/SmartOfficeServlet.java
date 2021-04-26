@@ -119,6 +119,7 @@ public class SmartOfficeServlet extends HttpServlet {
 			String buildingAddress = request.getParameter("buildingAddress");
 			Building b = facade.findByAddress(buildingAddress);
 			Set<Office> offices = new HashSet<Office>();
+			//Note to self - Set<Office> might need to be cast to a List<Office> object instead.
 			
 			if(b != null) {
 				offices = b.getOffices();
