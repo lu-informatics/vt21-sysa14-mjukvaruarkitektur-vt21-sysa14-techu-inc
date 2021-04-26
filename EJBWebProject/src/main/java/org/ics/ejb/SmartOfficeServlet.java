@@ -143,7 +143,7 @@ public class SmartOfficeServlet extends HttpServlet {
 		//AddOffice finished!
 		try {
 			if (operation.equals("AddOffice")) {
-				String ventilationSetting = request.getParameter("name");
+				String ventilationSetting = request.getParameter("ventilationSetting");
 				int temperatureSetting = Integer.parseInt(request.getParameter("temperatureSetting"));
 				String buildingAddress = request.getParameter("buildingAddress");
 				Building b = facade.findByAddress(buildingAddress);
@@ -169,10 +169,9 @@ public class SmartOfficeServlet extends HttpServlet {
 				out.print(value.toString());
 				out.flush();
 
-			} else if (operation.equals("DeleteOffice")) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				System.out.println(id);
-				facade.deleteOffice(id);
+			} else if (operation.equals("DeleteOffice")) { //Finished (ish)
+				String officeNumber = request.getParameter("officeNumber");
+				facade.deleteOffice(officeNumber);
 
 				JsonObject value = Json.createObjectBuilder().add("index", request.getParameter("index")).build();
 
@@ -182,22 +181,20 @@ public class SmartOfficeServlet extends HttpServlet {
 
 				out.print(value.toString());
 				out.flush();
-			} else if (operation.equals("updateOffice")) {
+			} else if (operation.equals("updateOffice")) { //Update office (kind of finished)
 
-				int regNbr = this.getBuildingId(request.getParameter("spaceship"));
-				Building s = facade.findByRegNbr(regNbr);
+				Office o = facade.findByOfficeId(request.getParameter("officeNumber"));
+				o.setTemperatureSetting(Integer.parseInt(request.getParameter("temperatureSetting")));
+				o.setVentilationSetting(request.getParameter("ventilationSetting"));
 
-				Office a = facade.findByOfficeID(Integer.parseInt(request.getParameter("id")));
-				a.setName(request.getParameter("name"));
-				a.setRank(request.getParameter("rank"));
-				a.setBuilding(s);
-
-				facade.updateOffice(a);
+				facade.updateOffice(o);
 
 				// Todo fixa så att sidan inte laddas om vid update
-				JsonObject value = Json.createObjectBuilder().add("id", a.getOfficeID()).add("name", a.getName())
-						.add("rank", a.getRank())
-						.add("spaceship", a.getBuilding().getRegNbr() + " " + a.getBuilding().getHomeStation())
+				JsonObject value = Json.createObjectBuilder()
+						.add("officeNumber", o.getOfficeNumber())
+						.add("temperatureSetting", o.getTemperatureSetting())
+						.add("ventilationSetting", o.getVentilationSetting())
+						.add("building", o.getBuilding().getAddress())
 						.build();
 
 				response.setContentType("application/json");
@@ -208,6 +205,11 @@ public class SmartOfficeServlet extends HttpServlet {
 				out.flush();
 
 			}
+		}
+		catch (Exception e) {
+			//Do something
+		}
 	}
-
 }
+
+
