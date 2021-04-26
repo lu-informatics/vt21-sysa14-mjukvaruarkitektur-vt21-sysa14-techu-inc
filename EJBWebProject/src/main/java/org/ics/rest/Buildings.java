@@ -80,7 +80,7 @@ public class Buildings extends HttpServlet {
 			try {
 				b = facade.createBuilding(b);
 			}catch(Exception e) {
-				System.out.println("duplicate key");
+		
 			}
 			sendAsJson(response, b);
 		}
@@ -162,7 +162,7 @@ public class Buildings extends HttpServlet {
 			JsonArrayBuilder array = Json.createArrayBuilder();
 			for (Building b : buildings) {
 				JsonObjectBuilder o = Json.createObjectBuilder();
-				o.add("address", String.valueOf(b.getAddress()));
+				o.add("address", b.getAddress());
 				array.add(o);
 			}
 			JsonArray jsonArray = array.build();
