@@ -17,7 +17,7 @@ import org.ics.facade.FacadeLocal;
  * Servlet implementation class SoftwareArchitectureServlet
  */
 @WebServlet("/SoftwareArchitectureServlet")
-public class SoftwareArchitectureServlet extends HttpServlet {
+public class TestSmartOfficeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private FacadeLocal facade;
@@ -25,7 +25,7 @@ public class SoftwareArchitectureServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SoftwareArchitectureServlet() {
+    public TestSmartOfficeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

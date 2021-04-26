@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#banner{
+    background: url(images/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    height:100vh;
+
+}
+
+
+.logo{
+    width: 140px;
+    position: absolute;
+    top: 1%;
+    left: 5%;
+}
+.banner-text{
+    text-align: center;
+    color: gray;
+    padding-top: 150px;
+}
+.banner-text h1{
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    color:rgb(240, 167, 33);
+}
+
+.banner-text p{
+    font-size: 20px;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(59, 57, 57);
+}
+
+.banner-btn{
+    margin: 30px auto 0;
+    font-size: 20px; 
+    color: rgb(240, 167, 33) ;
+    font-style:normal;
+    font-weight:normal;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.banner-btn a{
+    width: 220px;
+    text-decoration: none;
+    display: inline-block;
+    margin:0 10px;
+    padding: 20px 0;
+    color: rgb(240, 167, 33);
+    border:1.5px solid rgb(240, 167, 33);
+    position: relative;
+    z-index: 1;
+
+}
+.banner-btn a span{
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(255, 244, 219);
+    z-index: -1; /*z-index visar hur ett element är positioned ju högre desto större prio(syns framför andra element)*/
+    transition: 0.5s;
+
+}
+
+.banner-btn a:hover span{
+    width: 100%;
+
+}
+
+/*footer*/
+.footer{
+    color: black;
+    background: rgb(255, 244, 219);
+    height: 200px;
+    bottom: 0%;
+}
+
+.footer .p{
+    color: rgb(99, 93, 93);
+    
+}
+#topPic{
+    background: url(images/cup-of-coffee-1280537_1920.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.content-table{
+    border-collapse: collapse;
+    margin:25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 5px 5px;
+    overflow: hidden;
+    box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
+    position:relative;
+    right: -370px;
+    top: 90px;
+    background-color: white;
+}
+
+.content-table thead tr{
+    background-color: rgb(255, 244, 219);
+    color: orange;
+    text-align: left;
+    font-weight: bold;
+    
+}
+
+.content-table th,
+.content-table td{
+    padding:12px 15px;
+}
+
+.content-table tbody tr{
+    border-bottom: 1px solid rgb(255, 244, 219);
+
+}
+
+.content-table tbody tr:last-of-type{
+    border-bottom: 2px solid rgb(255, 244, 219);
+}
+
+
+.textHeader{
+    width: 100%;
+    background-color: rgba(0,0,0,.2);
+    height: 80px;
+
+}
+
+.textHeader ul{
+    text-align: center;
+}
+
+.textHeader ul li{
+    list-style: none;
+    display: inline-block;
+}
+
+.textHeader ul li a{
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 25px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.logos{
+    width: 140px;
+    position: absolute;
+    bottom: 1%;
+    right: 5%;
+}
