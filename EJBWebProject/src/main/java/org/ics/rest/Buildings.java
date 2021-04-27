@@ -76,43 +76,27 @@ public class Buildings extends HttpServlet {
 			BufferedReader reader = request.getReader();//Läs data Json
 
 			Building b = parseJsonBuilding(reader);
-
-			try {
+			
+			Building building = facade.findByAddress(b.getAddress());
+			if (building == null) {
 				b = facade.createBuilding(b);
-			}catch(Exception e) {
-		
 			}
+			else {
+				//To trigger exception in
+				//sendAsJson(HttpServletResponse response, Building building)
+				
+				b = null; 
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			}
+			
+			
 			sendAsJson(response, b);
 		}
 	}
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 * Update
+	 * Update not implemented because Building only has one attribute which is the primary key. Not updateable.
 	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		String pathInfo = request.getPathInfo();
-		if(pathInfo == null || pathInfo.equals("/")){
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
-		String[] splits = pathInfo.split("/");
-		if(splits.length != 2) {
-			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return;
-		}
-		//Perhaps add "String id = splits[1];" if it doesn't work.
-		BufferedReader reader = request.getReader();
-
-		Building b = parseJsonBuilding(reader);
-		try {
-			b = facade.updateBuilding(b);
-		}catch(Exception e) {
-			System.out.println("facade Update Error");
-		}
-		sendAsJson(response, b);
-	}
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
@@ -148,7 +132,7 @@ public class Buildings extends HttpServlet {
 			out.print("{\"address\":");
 			out.print("\"" + building.getAddress() + "\"}");
 		} else {
-			out.print("{ }");
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
 		out.flush();
 	}
