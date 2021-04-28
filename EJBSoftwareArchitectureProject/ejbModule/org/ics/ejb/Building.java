@@ -22,6 +22,11 @@ public class Building implements Serializable {
 	private String address;
 	private Set<Office> offices;
 
+	public Building(String address) {
+		this.address = address;
+	}
+	public Building() {
+	}
 	@Id
 	@Column(name="address")
 	public String getAddress() {

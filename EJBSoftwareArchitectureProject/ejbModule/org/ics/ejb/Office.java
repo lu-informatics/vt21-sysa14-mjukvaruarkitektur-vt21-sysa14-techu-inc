@@ -25,6 +25,13 @@ public class Office implements Serializable{
 	private Building building;
 	private int ID;
 
+	public Office(String ventilationSetting, int temperatureSetting, Building building) {
+		this.ventilationSetting = ventilationSetting;
+		this.temperatureSetting = temperatureSetting;
+		this.building = building;
+	}
+	public Office() {
+	}
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false, updatable = false, insertable = false)
 	public int getID() {
