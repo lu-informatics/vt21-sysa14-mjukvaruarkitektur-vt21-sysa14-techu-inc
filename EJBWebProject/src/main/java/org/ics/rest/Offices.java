@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.ics.ejb.Building;
 import org.ics.ejb.Office;
 import org.ics.facade.FacadeLocal;
 
@@ -74,7 +75,7 @@ public class Offices extends HttpServlet {
 		if(pathInfo == null || pathInfo.equals("/")){
 			BufferedReader reader = request.getReader();//Läs data Json
 
-			Office o = parseJsonOffice(reader);
+			Office o = parseJsonOfficeCreate(reader);
 
 			try {
 				o = facade.createOffice(o);
@@ -89,9 +90,8 @@ public class Offices extends HttpServlet {
 	 * Update
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
 		String pathInfo = request.getPathInfo();
+		
 		if(pathInfo == null || pathInfo.equals("/")){
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
@@ -101,17 +101,25 @@ public class Offices extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
 		}
-		//Perhaps add "String id = splits[1];" if it doesn't work.
+		String id = splits[1];
 		BufferedReader reader = request.getReader();
 
-		Office o = parseJsonOffice(reader);
+		Office m = parseJsonOfficeUpdate(reader);
+		//Uppdatera i db
 		try {
-			o = facade.updateOffice(o);
+			if(facade.findByOfficeId(id) != null) {
+			m = facade.updateOffice(m);
+			System.out.println("Update from facade.");
+			}else {
+				response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			}
+
 		}catch(Exception e) {
 			System.out.println("facade Update Error");
 		}
-		sendAsJson(response, o);
+		sendAsJson(response, m);
 	}
+
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
@@ -154,7 +162,7 @@ public class Offices extends HttpServlet {
 			out.print("\"" +office.getVentilationSetting()+"\"}");
 
 		} else {
-			out.print("{ }");
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		}
 		out.flush();
 	}
@@ -182,18 +190,30 @@ public class Offices extends HttpServlet {
 		out.flush();
 	}
 
-	private Office parseJsonOffice(BufferedReader reader) {
+	private Office parseJsonOfficeCreate(BufferedReader reader) {
 		JsonReader jsonReader = null;
 		JsonObject jsonRoot = null;
 		jsonReader = Json.createReader(reader);
 		jsonRoot = jsonReader.readObject();
 		Office office = new Office();
 		office.setBuilding(facade.findByAddress(jsonRoot.getString("buildingAddress")));
-		office.setOfficeNumber(jsonRoot.getString("officeNumber")); //Auto-generated, still works?
 		office.setTemperatureSetting(Integer.parseInt(jsonRoot.getString("temperatureSetting")));
 		office.setVentilationSetting(jsonRoot.getString("ventilationSetting"));
 
 		return office;
+	}
+	private Office parseJsonOfficeUpdate(BufferedReader br) {
+		JsonReader jsonReader = null;
+		 JsonObject jsonRoot = null;
+		 jsonReader = Json.createReader(br);
+		 jsonRoot = jsonReader.readObject();
+		 System.out.println("JsonRoot: "+jsonRoot);
+		 Office office = new Office();
+		 office.setOfficeNumber(jsonRoot.getString("officeNumber"));
+		 office.setBuilding(facade.findByAddress(jsonRoot.getString("buildingAddress")));
+		 office.setTemperatureSetting(Integer.parseInt(jsonRoot.getString("temperatureSetting")));
+		 office.setVentilationSetting(jsonRoot.getString("ventilationSetting"));
+		 return office;
 	}
 	// office: {"buildingAddress": "Örebro", "officeNumber": "O00021", "temperatureSetting": "24"
 	//, "ventilationSetting": "V3"}
