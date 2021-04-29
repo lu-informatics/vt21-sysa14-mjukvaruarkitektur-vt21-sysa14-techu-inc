@@ -18,8 +18,8 @@
   </module>
   <module>
     <web>
-      <web-uri>EJBSoftwareArchitectureRESTClient.war</web-uri>
-      <context-root>EJBSoftwareArchitectureRESTClient</context-root>
+      <web-uri>DummyTestWebProject.war</web-uri>
+      <context-root>DummyTestWebProject</context-root>
     </web>
   </module>
 </application>

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang ="sv">
     <head>
@@ -47,6 +45,42 @@
                         </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>O0001</td>
+                        <td>Albogatan</td>
+                        <td> 24 &#8451;</td>
+                        <td>V2</td>
+                    </tr>
+                    <tr>
+                        <td>O0002</td>
+                        <td>Lundavägen</td>
+                        <td> 22 &#8451;</td>
+                        <td>V2</td>
+                    </tr>
+                    <tr>
+                        <td>O0003</td>
+                        <td>Malmögatan</td>
+                        <td> 25 &#8451;</td>
+                        <td>V2</td>
+                    </tr>
+                    <tr>
+                        <td>O0001</td>
+                        <td>Albogatan</td>
+                        <td> 24 &#8451;</td>
+                        <td>V2</td>
+                    </tr>
+                    <tr>
+                        <td>O0001</td>
+                        <td>Albogatan</td>
+                        <td> 24 &#8451;</td>
+                        <td>V2</td>
+                    </tr>
+                    <tr>
+                        <td>O0001</td>
+                        <td>Albogatan</td>
+                        <td> 24 &#8451;</td>
+                        <td>V2</td>
+                    </tr>
                 </tbody>
             </table>
             </section>   
@@ -63,7 +97,26 @@
                 <img src="images/white-menu-icon-0.jpg" id="menu">
             </div>
 <script>
+    var menuBtn = document.getElementById("menuBtn")
+    var sidenav = document.getElementById("sidenav")
+    var menu = document.getElementById("menu")
+   
     
+   
+    menuBtn.onclick = function(){
+      
+        sidenav.style.display = "block";
+        if(sidenav.style.right == "-250px"){
+            sidenav.style.right = "0";
+           
+           
+        }
+        else{
+            sidenav.style.right = "-250px";
+     
+        
+        }
+    }
 
 </script>
         </body>

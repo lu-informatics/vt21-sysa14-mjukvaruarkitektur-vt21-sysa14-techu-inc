@@ -46,8 +46,8 @@ public class Facade implements FacadeLocal {
 		return buildingEAO.getAllBuildings();
 	}
 
-	public Office findByOfficeId(String officeNumber) {
-		return officeEAO.findByOfficeId(officeNumber);
+	public Office findByOfficeNumber(String officeNumber) {
+		return officeEAO.findByOfficeNumber(officeNumber);
 	}
 
 	public Office createOffice(Office office) {

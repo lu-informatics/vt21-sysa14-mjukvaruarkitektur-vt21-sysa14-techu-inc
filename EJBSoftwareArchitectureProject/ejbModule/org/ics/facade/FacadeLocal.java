@@ -15,7 +15,7 @@ public interface FacadeLocal {
     public void deleteBuilding(String address);
     public List<Building> getAllBuildings();
     
-    public Office findByOfficeId(String officeNumber);
+    public Office findByOfficeNumber(String officeNumber);
     public Office createOffice(Office office);
     public Office updateOffice(Office office);
     public void deleteOffice(String officeNumber);

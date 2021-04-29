@@ -24,7 +24,7 @@ public class OfficeEAOImpl implements OfficeEAOLocal {
     public OfficeEAOImpl() {
         // TODO Auto-generated constructor stub
     }
-    public Office findByOfficeId(String officeNumber){
+    public Office findByOfficeNumber(String officeNumber){
     	return em.find(Office.class, officeNumber);
     	}
     public Office createOffice(Office office) {
@@ -36,7 +36,7 @@ public class OfficeEAOImpl implements OfficeEAOLocal {
     	return office;
     	}
     public void deleteOffice(String officeNumber) {
-    	Office office = this.findByOfficeId(officeNumber);
+    	Office office = this.findByOfficeNumber(officeNumber);
     	if(office != null) {
     		em.remove(office);
     		}

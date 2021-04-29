@@ -58,7 +58,7 @@ public class Offices extends HttpServlet {
 			return;
 		}
 		String officeNumber = splits[1];
-		Office o = facade.findByOfficeId(officeNumber);
+		Office o = facade.findByOfficeNumber(officeNumber);
 		sendAsJson(response, o);
 
 
@@ -107,7 +107,7 @@ public class Offices extends HttpServlet {
 		Office m = parseJsonOfficeUpdate(reader);
 		//Uppdatera i db
 		try {
-			if(facade.findByOfficeId(id) != null) {
+			if(facade.findByOfficeNumber(id) != null) {
 			m = facade.updateOffice(m);
 			System.out.println("Update from facade.");
 			}else {
@@ -138,7 +138,7 @@ public class Offices extends HttpServlet {
 			return;
 		}
 		String officeNumber = splits[1];
-		Office office = facade.findByOfficeId(officeNumber);
+		Office office = facade.findByOfficeNumber(officeNumber);
 		if (office != null) {
 			facade.deleteOffice(officeNumber);
 		}
