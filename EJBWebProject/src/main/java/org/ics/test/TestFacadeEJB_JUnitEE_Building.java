@@ -8,9 +8,9 @@ import org.ics.facade.FacadeLocal;
 
 import junit.framework.TestCase;
 
-public class TestFacadeEJB_JUnitEE extends TestCase {
+public class TestFacadeEJB_JUnitEE_Building extends TestCase {
 
-	public TestFacadeEJB_JUnitEE(String name) {
+	public TestFacadeEJB_JUnitEE_Building(String name) {
 		super(name);
 	}
 
