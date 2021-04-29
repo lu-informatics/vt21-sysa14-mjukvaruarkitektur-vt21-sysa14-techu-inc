@@ -25,6 +25,7 @@ public class TestFacadeEJB_JUnitEE_Office extends TestCase {
 	String expectedVentilationSetting;
 	int expectedTemperatureSetting;
 	String expectedBuildingAddress;
+	String expectedOfficeNumber;
 
 	String expectedUpdatedVentilationSetting;
 	int expectedUpdatedTemperatureSetting;
@@ -38,37 +39,45 @@ public class TestFacadeEJB_JUnitEE_Office extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		
-		expectedBuildingAddress = "Haparanda";
+		expectedBuildingAddress = "Danderyd";
 		expectedVentilationSetting = "V2";
 		expectedTemperatureSetting = 20;
 
 		expectedUpdatedVentilationSetting = "V4";
 		expectedUpdatedTemperatureSetting = 19;
-		expectedUpdatedBuildingAddress = "Jönköping";
+		expectedUpdatedBuildingAddress = "Tensta";
 
 		Context context = new InitialContext();
 		facadeLocal = (FacadeLocal) context.lookup("java:app/EJBSoftwareArchitectureProject/Facade!org.ics.facade.FacadeLocal");
 		
-		building1 = new Building(expectedBuildingAddress);
-		building2 = new Building(expectedUpdatedBuildingAddress);
-		office1 = new Office(expectedVentilationSetting, expectedTemperatureSetting, building1);
+		office1 = new Office();
+		building1 = facadeLocal.findByAddress(expectedBuildingAddress);
+		building2 = facadeLocal.findByAddress(expectedUpdatedBuildingAddress);
 
 	}
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
 
-		facadeLocal.deleteBuilding(expectedBuildingAddress);
-		facadeLocal.deleteOffice(office1.getOfficeNumber());
+		facadeLocal.deleteOffice(expectedOfficeNumber);
 		facadeLocal = null;
 
 		office1 = null;
 		office2 = null;
+		building1 = null;
+		building2 = null;
 	}
 
 	public void testFacadeOffice() {
+		office1.setBuilding(building1);
+		office1.setTemperatureSetting(expectedTemperatureSetting);
+		office1.setVentilationSetting(expectedVentilationSetting);
+		
 		office1 = facadeLocal.createOffice(office1);
-		office2 = facadeLocal.findByOfficeNumber(office1.getOfficeNumber());
+		
+		expectedOfficeNumber = office1.getOfficeNumber();
+		
+		office2 = facadeLocal.findByOfficeNumber(expectedOfficeNumber);
 		//No test of primary key, because it is auto-generated in SQL.
 		assertEquals(office2.getBuilding().getAddress(), expectedBuildingAddress);
 		assertEquals(office2.getTemperatureSetting(), expectedTemperatureSetting);
@@ -76,9 +85,9 @@ public class TestFacadeEJB_JUnitEE_Office extends TestCase {
 	}
 	
 	public void testUpdateOffice() {
-		Office updatedOffice = new Office(expectedUpdatedVentilationSetting, expectedUpdatedTemperatureSetting, building2);
+		Office updatedOffice = new Office(expectedOfficeNumber, expectedUpdatedVentilationSetting, expectedUpdatedTemperatureSetting, building2);
 		office1 = facadeLocal.updateOffice(updatedOffice);
-		office2 = facadeLocal.findByOfficeNumber(office1.getOfficeNumber());
+		office2 = facadeLocal.findByOfficeNumber(expectedOfficeNumber);
 		assertEquals(office2.getBuilding().getAddress(), expectedUpdatedBuildingAddress);
 		assertEquals(office2.getTemperatureSetting(), expectedUpdatedTemperatureSetting);
 		assertEquals(office2.getVentilationSetting(), expectedUpdatedVentilationSetting);
