@@ -7,18 +7,39 @@
 <title>SmartOffice Test Page</title>
 </head>
 <body>
+<img src="img/CompanyLogo.png" class="logo">
+
+	<section id="topPic">
+
+		
+		<div class="textHeader">
+
+			<ul>
+				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeAbout.jsp">About</a></li>
+				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
+				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
+			</ul>
+			<div class="h1hometext" style="top: 45px;">
+			<h1>Testing</h1>
 	<p>
 		Please choose one of the following tests:<br>
 	</p>
-	<form action="TestServlet" method="get" name="youPickItForm">
-		<select name="suite" size="3" multiple>
-			<option value="org.ics.test.AllTests">
-				org.ics.test.AllTests</option>
+	</div>
+
+	<div class="FormTest">
+	<form action="TestServlet" method="get" id="youPickItForm">
+		<select name="suite" size="3" style="font-size: 28px;padding-left: 70px;padding-right: 70px;padding-top: 20px;padding-bottom: 20px; 
+    background: rgba(0, 0, 0, 0.3); border: 0px; border-radius: 3px 3px 3px 3px;  font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; font-style: italic;"
+    multiple>
+			<option value="org.ics.test.AllTests"> 
+				All Tests</option>
 			<option value="org.ics.test.TestBuildingEJB_JUnitEE">
-				org.ics.test.TestBuildingEJB_JUnitEE</option>
+				Test Building</option>
 			<option value="org.ics.test.TestOfficeEJB_JUnitEE">
-				org.ics.test.TestOfficeEJB_JUnitEE</option>
-		</select> <input type="submit" value="Run" />
+				Test Offices</option>
+		</select> <input type="submit" value="Test" id="btnTest">
 	</form>
+	</div>
 </body>
 </html>
