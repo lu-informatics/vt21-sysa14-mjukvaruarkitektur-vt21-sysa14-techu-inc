@@ -25,14 +25,14 @@ div {
 
 	<section id="topPic">
 
-		<div class="container"></div>
+		
 		<div class="textHeader">
 
 			<ul>
-				<li><a href="home.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="#">Testing</a></li>
-				<li><a href="index.html">Start</a></li>
+				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeAbout.jsp">About</a></li>
+				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
+				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
 			</ul>
 
 
@@ -116,8 +116,8 @@ div {
 	<div id="sidenav" style="display: none;">
 		<nav>
 			<ul>
-				<li><a href="home.html">Offices</a></li>
-				<li><a href="homebuilding.html">Buildings</a></li>
+				<li><a href="Smart_Offices.jsp">Offices</a></li>
+				<li><a href="SmartOfficeHome.jsp">Buildings</a></li>
 
 			</ul>
 		</nav>

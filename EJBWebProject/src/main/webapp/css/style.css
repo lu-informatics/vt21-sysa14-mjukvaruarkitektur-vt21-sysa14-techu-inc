@@ -3,7 +3,7 @@
     padding: 0;
 }
 #banner{
-    background: url(images/banner.jpg);
+    background: url(banner.jpg);
     background-size: cover;
     background-position: center;
     height:100vh;
@@ -286,34 +286,54 @@ nav ul li a{
     transform: translateY(-10px) ;
 }
 
-.contentAbout h2{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-transform: uppercase;
-    color: rgb(197, 197, 197);
-    letter-spacing: 2px;
-    font-weight:bolder;
-}
-.contentAbout span{
-    padding-top: 15px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 17.5px;
-    letter-spacing: 0.5px;
-    color: rgb(59, 57, 57);
-    padding-left: 40px;
+.contentAbout {
+	position: relative;
+	top: 25%;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.5);
+	width: 50%;
+	height: 65%;
+	position: relative;
+	left: 25%;
+	border-radius: 5px 5px 5px 5px;
 }
 
-.contentAbout p{
-    font-size: 17.5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(59, 57, 57);
-    padding-top: 15px;
-    letter-spacing: 0.5px;
-    padding-left: 40px;
-    font-weight: lighter; 
+.contentAbout h2 {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-transform: uppercase;
+	color: rgb(197, 197, 197);
+	letter-spacing: 2px;
+	font-weight: bolder;
+	padding-top: 25px;
 }
 
+.contentAbout span {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 17.5px;
+	letter-spacing: 0.5px;
+	color: white;
+	padding-left: 5px;
+	margin-top: 45px;
+	font-weight: bold;
+	position: relative;
+	bottom: 4%;
+}
 
-
+.contentAbout p {
+	font-size: 17.5px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: white;
+	padding-top: 5px;
+	letter-spacing: 0.5px;
+	padding-left: 5px;
+	font-weight: normal;
+	text-align: center;
+	justify-content: center;
+	margin-left: 25px;
+	margin-right: 25px;
+	position: relative;
+	bottom: 2%;
+}
 
 #asideTable {
     padding-top: 10px;
@@ -379,4 +399,21 @@ nav ul li a{
     bottom: 10px;
     font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    
+}
+
+#youPickItForm{
+	position: relative;
+    left: 60vh;
+    top: 15vh
+}
+
+#btnTest {
+	position: relative;
+    left: -20vh;
+    top: 10vh;
+	font-size: 3vh;
+	padding: 14px 40px;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	
 }
