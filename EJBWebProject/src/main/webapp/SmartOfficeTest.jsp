@@ -14,10 +14,10 @@
 		<select name="suite" size="3" multiple>
 			<option value="org.ics.test.AllTests">
 				org.ics.test.AllTests</option>
-			<option value="org.ics.test.TestFacadeEJB_JUnitEE_Building">
-				org.ics.test.TestFacadeEJB_JUnitEE_Building</option>
-			<option value="org.ics.test.TestFacadeEJB_JUnitEE_Office">
-				org.ics.test.TestFacadeEJB_JUnitEE_Office</option>
+			<option value="org.ics.test.TestBuildingEJB_JUnitEE">
+				org.ics.test.TestBuildingEJB_JUnitEE</option>
+			<option value="org.ics.test.TestOfficeEJB_JUnitEE">
+				org.ics.test.TestOfficeEJB_JUnitEE</option>
 		</select> <input type="submit" value="Run" />
 	</form>
 </body>
