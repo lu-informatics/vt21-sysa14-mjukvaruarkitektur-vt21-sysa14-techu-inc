@@ -8,7 +8,10 @@ import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,27 +28,29 @@ import org.ics.facade.FacadeLocal;
 @WebServlet("/SmartOfficeServlet")
 public class SmartOfficeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@EJB
 	private FacadeLocal facade;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SmartOfficeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * doGet for header operations to redirect to other pages or to find an object.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SmartOfficeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response) doGet for header operations to redirect to other pages or to
+	 *      find an object.
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String operation = request.getParameter("operation");
 		ServletContext sc = this.getServletContext();
-		
-		//Find building
+
+		// Find building
 		if ("findBuilding".equals(operation)) {
 
 			String buildingAddress = request.getParameter("buildingAddress");
@@ -71,7 +76,7 @@ public class SmartOfficeServlet extends HttpServlet {
 				out.flush();
 			}
 		} else if ("findOffice".equals(operation)) {
-			
+
 			String officeNumber = request.getParameter("officeNumber");
 			Office o = facade.findByOfficeNumber(officeNumber);
 
@@ -110,18 +115,18 @@ public class SmartOfficeServlet extends HttpServlet {
 			List<Office> offices = facade.getAllOffices();
 
 			request.setAttribute("offices", offices);
-			
+
 			RequestDispatcher rd = sc.getRequestDispatcher("/Smart_Offices.jsp");
 			rd.forward(request, response);
-
 		} else if ("findOfficesForBuilding".equals(operation)) {
-			//View associated office entities for a building.
+			// View associated office entities for a building.
 			String buildingAddress = request.getParameter("buildingAddress");
 			Building b = facade.findByAddress(buildingAddress);
 			Set<Office> offices = new HashSet<Office>();
-			//Note to self - Set<Office> might need to be cast to a List<Office> object instead.
-			
-			if(b != null) {
+			// Note to self - Set<Office> might need to be cast to a List<Office> object
+			// instead.
+
+			if (b != null) {
 				offices = b.getOffices();
 			}
 
@@ -132,16 +137,17 @@ public class SmartOfficeServlet extends HttpServlet {
 		} else if ("viewTest".equals(operation)) {
 			RequestDispatcher rd = sc.getRequestDispatcher("/SmartOfficeTest.jsp");
 			rd.forward(request, response);
-		} //TO-DO: 
+		} // TO-DO:
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * All other methods.
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response) All other methods.
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String operation = request.getParameter("operation");
-		//AddOffice finished!
+		// AddOffice finished!
 		try {
 			if (operation.equals("AddOffice")) {
 				String ventilationSetting = request.getParameter("ventilationSetting");
@@ -160,8 +166,7 @@ public class SmartOfficeServlet extends HttpServlet {
 						.add("officeNumber", o.getOfficeNumber())
 						.add("ventilationSetting", o.getVentilationSetting())
 						.add("temperatureSetting", o.getTemperatureSetting())
-						.add("building", o.getBuilding().getAddress())
-						.build();
+						.add("building", o.getBuilding().getAddress()).build();
 
 				response.setContentType("application/json");
 
@@ -170,7 +175,7 @@ public class SmartOfficeServlet extends HttpServlet {
 				out.print(value.toString());
 				out.flush();
 
-			} else if (operation.equals("DeleteOffice")) { //Finished (ish)
+			} else if (operation.equals("DeleteOffice")) { // Finished (ish)
 				String officeNumber = request.getParameter("officeNumber");
 				facade.deleteOffice(officeNumber);
 
@@ -182,7 +187,7 @@ public class SmartOfficeServlet extends HttpServlet {
 
 				out.print(value.toString());
 				out.flush();
-			} else if (operation.equals("updateOffice")) { //Update office (kind of finished)
+			} else if (operation.equals("updateOffice")) { // Update office (kind of finished)
 
 				Office o = facade.findByOfficeNumber(request.getParameter("officeNumber"));
 				o.setTemperatureSetting(Integer.parseInt(request.getParameter("temperatureSetting")));
@@ -191,12 +196,10 @@ public class SmartOfficeServlet extends HttpServlet {
 				facade.updateOffice(o);
 
 				// Todo fixa så att sidan inte laddas om vid update
-				JsonObject value = Json.createObjectBuilder()
-						.add("officeNumber", o.getOfficeNumber())
+				JsonObject value = Json.createObjectBuilder().add("officeNumber", o.getOfficeNumber())
 						.add("temperatureSetting", o.getTemperatureSetting())
 						.add("ventilationSetting", o.getVentilationSetting())
-						.add("building", o.getBuilding().getAddress())
-						.build();
+						.add("building", o.getBuilding().getAddress()).build();
 
 				response.setContentType("application/json");
 
@@ -206,11 +209,8 @@ public class SmartOfficeServlet extends HttpServlet {
 				out.flush();
 
 			}
-		}
-		catch (Exception e) {
-			//Do something
+		} catch (Exception e) {
+			// Do something
 		}
 	}
 }
-
-
