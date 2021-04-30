@@ -22,10 +22,4 @@
       <context-root>DummyTestWebProject</context-root>
     </web>
   </module>
-  <module>
-    <web>
-      <web-uri>SmartOfficeWebProject.war</web-uri>
-      <context-root>SmartOfficeWebProject</context-root>
-    </web>
-  </module>
 </application>

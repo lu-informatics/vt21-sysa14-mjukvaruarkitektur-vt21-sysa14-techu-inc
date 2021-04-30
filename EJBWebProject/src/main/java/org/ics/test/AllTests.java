@@ -9,9 +9,9 @@ public class AllTests extends TestCase {
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
-		suite.addTestSuite(TestFacadeEJB_JUnitEE_Building.class);
-		suite.addTestSuite(TestFacadeEJB_JUnitEE_Office.class);
-		//$JUnit-END$
+		suite.addTestSuite(TestBuildingEJB_JUnitEE.class);
+		suite.addTestSuite(TestOfficeEJB_JUnitEE.class);
+		//$JUnit-END$ 
 		return suite;
 	}
 
