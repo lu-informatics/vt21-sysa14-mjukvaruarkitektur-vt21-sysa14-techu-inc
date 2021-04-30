@@ -64,7 +64,7 @@
     top: 0;
     left: 0;
     background: rgb(255, 244, 219);
-    z-index: -1; /*z-index visar hur ett element Ã¤r positioned ju hÃ¶gre desto stÃ¶rre prio(syns framfÃ¶r andra element)*/
+    z-index: -1; /*z-index visar hur ett element är positioned ju högre desto större prio(syns framför andra element)*/
     transition: 0.5s;
 
 }
@@ -87,7 +87,7 @@
     
 }
 #topPic{
-    background: linear-gradient(rgba(0, 0, 0, 0.5),#fed8b1),url(images/buildings-865292_1920.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.5),#fed8b1),url(buildings-865292_1920.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -105,6 +105,7 @@
     position: relative;
     left: 30%;
     background-color: white;
+    bottom: 120px;
 }
 
 .content-table thead tr{
@@ -145,7 +146,7 @@
     display: block;
     text-decoration: none;
     text-transform: uppercase;
-    color: rgb(197, 197, 197);
+    color: white;
     font-size: 12.5px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 2px;
@@ -174,13 +175,15 @@
     text-align: center;
     color: gray;
     padding-top: 90px;
+    position: relative;
+    bottom: 120px
 }
 .h1hometext h1{
     font-size: 25px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     letter-spacing: 2px;
     font-weight: bolder;
-    color:rgb(197, 197, 197);
+    color:white;
 }
 
 .h1hometext p{
@@ -192,7 +195,7 @@
 
 #sidenav{
     width:150px;
-    height: 75vh;
+    height: 60vh;
     position: fixed;
     right: 0;
     top: 90px;
@@ -236,6 +239,7 @@ nav ul li a{
     z-index: 3;
     cursor: pointer;
     transition: 0.5s;
+   
 }
 
 #menuBtn:hover{
@@ -247,37 +251,9 @@ nav ul li a{
     margin-top: 4.5px;
 }
 
-.TUimage{
-    background:linear-gradient(rgba(0, 0, 0, 0.5),#fed8b1), url(images/pexels-fauxels-3184429.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    overflow: hidden;
-}
 
-.contentAbout{
-    background: rgb(255, 244, 219);
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
 
-.bodyAbout{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    display: grid;
-    background-color: rgb(255, 244, 219);
-    align-content: center;
-    min-height: 100vh;
-}
 
-#sectionAbout{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 90vh;
-    width: 85vw;
-    margin:0 auto;
-}
 
 .links ul{
     text-align: center;
@@ -334,4 +310,73 @@ nav ul li a{
     letter-spacing: 0.5px;
     padding-left: 40px;
     font-weight: lighter; 
+}
+
+
+
+
+#asideTable {
+    padding-top: 10px;
+    padding-left: 12px;
+    text-align: center;
+   background:rgba(0, 0, 0, 0.5);
+   border-radius: 5px 5px 5px 5px;
+    position: relative;
+    left: 5%;
+    top: 90px;
+    height: 150px;
+    width: 50vh;    
+}
+
+#asideTable td {
+    text-align: left;
+    padding-left: 30px;
+  
+}
+
+#city{
+    color: white;
+    text-align:center;
+    position: relative;
+    right:-10px;
+    bottom: 5px;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#ipNbr{
+    color: white;
+    text-align:center;
+    position: relative;
+    left:-35px;
+    bottom: 5px;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+#degree{
+   
+    color: white;
+    position: relative;
+    left:40px;
+    bottom:7px;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+#weather{
+   
+    color: white;
+    position: relative;
+    right:15px;
+    bottom: 7px;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}
+
+#sunrise, #sunset{
+    color: white;
+    position: relative;
+    left: 40px;
+    bottom: 10px;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
 }

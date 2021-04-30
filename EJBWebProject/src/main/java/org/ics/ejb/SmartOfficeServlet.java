@@ -73,7 +73,7 @@ public class SmartOfficeServlet extends HttpServlet {
 		} else if ("findOffice".equals(operation)) {
 			
 			String officeNumber = request.getParameter("officeNumber");
-			Office o = facade.findByOfficeId(officeNumber);
+			Office o = facade.findByOfficeNumber(officeNumber);
 
 			if (o != null) {
 				JsonObject value = Json.createObjectBuilder().add("office", true).build();
@@ -184,7 +184,7 @@ public class SmartOfficeServlet extends HttpServlet {
 				out.flush();
 			} else if (operation.equals("updateOffice")) { //Update office (kind of finished)
 
-				Office o = facade.findByOfficeId(request.getParameter("officeNumber"));
+				Office o = facade.findByOfficeNumber(request.getParameter("officeNumber"));
 				o.setTemperatureSetting(Integer.parseInt(request.getParameter("temperatureSetting")));
 				o.setVentilationSetting(request.getParameter("ventilationSetting"));
 

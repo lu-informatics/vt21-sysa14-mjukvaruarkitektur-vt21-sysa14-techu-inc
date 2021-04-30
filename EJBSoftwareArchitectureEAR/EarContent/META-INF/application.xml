@@ -16,4 +16,10 @@
       <context-root>EjbWebProject</context-root>
     </web>
   </module>
+  <module>
+    <web>
+      <web-uri>DummyTestWebProject.war</web-uri>
+      <context-root>DummyTestWebProject</context-root>
+    </web>
+  </module>
 </application>
