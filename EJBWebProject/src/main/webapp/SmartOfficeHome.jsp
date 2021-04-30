@@ -1,3 +1,6 @@
+<%@page import="org.ics.ejb.Office"%>
+<%@page import="org.ics.ejb.Building"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -56,40 +59,33 @@
 				</tr>
 			</table>
 		</nav>
-
+		
+		<% List<Building> buildingList = (List<Building>) request.getAttribute("buildings"); %>
+		
 		<table class="content-table" style="left: 35%; top: -85px">
 			<thead>
 				<tr>
-					<th style="text-align: center;">Adress</th>
+					<th style="text-align: center;">Address</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td style="text-align: center;">Albogatan</td>
+				<%
+					for (int i = 0; i < buildingList.size(); i += 1) {
+				%>
+				<tr onclick="myFunction(this)">
+					<td><%=buildingList.get(i).getAddress()%></td>
 				</tr>
-				<tr>
-					<td style="text-align: center;">Lundavägen</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">Malmögatan</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">Albogatan</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">Albogatan</td>
-				</tr>
-				<tr>
-					<td style="text-align: center;">Albogatan</td>
-				</tr>
+				<%
+					}
+				%>
 			</tbody>
 		</table>
 	</section>
 	<div id="sidenav" style="display: none;">
 		<nav>
 			<ul>
-				<li><a href="Smart_Offices.jsp">Offices</a></li>
-				<li><a href="SmartOfficeHome.jsp">Buildings</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewOffices">Offices</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewHome">Buildings</a></li>
 
 			</ul>
 		</nav>

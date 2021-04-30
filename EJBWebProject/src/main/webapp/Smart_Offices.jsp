@@ -1,3 +1,6 @@
+<%@page import="org.ics.ejb.Office"%>
+<%@page import="org.ics.ejb.Building"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -64,6 +67,10 @@ div {
 			</table>
 		</nav>
 
+		<%
+		List<Office> list = (List<Office>) request.getAttribute("offices");
+		%>
+
 		<table class="content-table" style="top: -85px;">
 			<thead>
 				<tr>
@@ -73,43 +80,19 @@ div {
 					<th>VentilationSetting</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>O0001</td>
-					<td>Albogatan</td>
-					<td>24 &#8451;</td>
-					<td>V2</td>
+			<tbody id="tableBodyOffice">
+				<%
+				for (int i = 0; i < list.size(); i += 1) {
+				%>
+				<tr onclick="myFunction(this)">
+					<td><%=list.get(i).getOfficeNumber()%></td>
+					<td><%=list.get(i).getBuilding().getAddress()%></td>
+					<td><%=list.get(i).getTemperatureSetting()%></td>
+					<td><%=list.get(i).getVentilationSetting()%></td>
 				</tr>
-				<tr>
-					<td>O0002</td>
-					<td>Lundavägen</td>
-					<td>22 &#8451;</td>
-					<td>V2</td>
-				</tr>
-				<tr>
-					<td>O0003</td>
-					<td>Malmögatan</td>
-					<td>25 &#8451;</td>
-					<td>V2</td>
-				</tr>
-				<tr>
-					<td>O0001</td>
-					<td>Albogatan</td>
-					<td>24 &#8451;</td>
-					<td>V2</td>
-				</tr>
-				<tr>
-					<td>O0001</td>
-					<td>Albogatan</td>
-					<td>24 &#8451;</td>
-					<td>V2</td>
-				</tr>
-				<tr>
-					<td>O0001</td>
-					<td>Albogatan</td>
-					<td>24 &#8451;</td>
-					<td>V2</td>
-				</tr>
+				<%
+				}
+				%>
 			</tbody>
 		</table>
 	</section>
