@@ -1,48 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang ="sv">
-    <head>
-    <title>About</title>
-    <style>
-         div{
-            box-sizing: border-box; 
-            text-align: center;  
-            padding: 0;
-            margin: 0; 
-            
-           
-            }
-            
-            </style>
-             <link rel="stylesheet" href="style.css">
-             <meta charset="utf-8">
-             <meta name="viewport" content="width=device-width, initial scale=1">
-        </head>
-        <body class="bodyAbout">
-            <section id="sectionAbout">
-                <div class="TUimage">
-                    
-                </div>
-               
-                <div class="contentAbout">
-                    <h2>About us</h2>
-                    <span>Vårt syfte är att ge våra kunder en nästan smidig, lite trevlig, och halvfärdig lösning till sina vardagsproblem inom IT.
-                    </span>
-                    <p>Denna makalösa it-lösning ger företag möjligheten att kontrollera sina kontor på en helt ny nivå. Genom SmartOffice 2.0 så kan ni kontrollera temperatur och ventilations inställningar för alla era kontor för hela den associerade byggnaden. Detta innebär att ni aldrig längre behöver oroa er för interpersonella konflikter mellan medarbetare över den ideala temperaturen för ett kontor. Det ger dig även möjligheten att stänga av ventilationen på den kollegan som du stört dig på i år. Alla problem på ditt kontor kan därav lösas av denna smarta applikation. 
-                    För att få tillgång till denna fantastiska lösning så kan du nå oss via brevduva eller röksignal. 
-                        </p>
-                        <div class="links">
-                        <ul>
-                                <li><a href="home.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="#">Testing</a></li>
-                                <li><a href="index.html">Start</a></li>
-                        </ul>
-                    </div>
-                </div> 
-            </section>
+<html lang="sv">
+<head>
 
-        </body>
-   
+<title>About</title>
+
+<link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial scale=1">
+</head>
+<body>
+	<img src="img/CompanyLogo.png" class="logo">
+
+	<section id="topPic">
+
+	
+		<div class="textHeader">
+
+			<ul>
+				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeAbout.jsp">About</a></li>
+				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
+				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
+			</ul>
+
+
+		</div>
+		</div>
+		<div class="contentAbout">
+			<h2>About us</h2>
+			<br> <span>Vårt syfte är att ge våra kunder en nästan
+				smidig, lite trevlig, och halvfärdig lösning till sina
+				vardagsproblem inom IT. </span> <br>
+			<p>Denna makalösa it-lösning ger företag möjligheten att
+				kontrollera sina kontor på en helt ny nivå. Genom SmartOffice 2.0 så
+				kan ni kontrollera temperatur och ventilations inställningar för
+				alla era kontor för hela den associerade byggnaden. Detta innebär
+				att ni aldrig längre behöver oroa er för interpersonella konflikter
+				mellan medarbetare över den ideala temperaturen för ett kontor. Det
+				ger dig även möjligheten att stänga av ventilationen på den kollegan
+				som du stört dig på i år. Alla problem på ditt kontor kan därav
+				lösas av denna smarta applikation. För att få tillgång till denna
+				fantastiska lösning så kan du nå oss via brevduva eller röksignal.</p>
+		</div>
+
+	</section>
+</body>
 </html>

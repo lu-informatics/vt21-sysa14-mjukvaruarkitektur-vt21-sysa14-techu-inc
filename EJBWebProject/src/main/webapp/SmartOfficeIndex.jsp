@@ -4,29 +4,23 @@
 <html lang ="sv">
     <head>
     <title>TechnologicalUnemployment</title>
-    <style>
-      div{
-            width: auto;  
-            text-align: center;  
-            padding: 15px solid white;  
-            border: 3px; background-color: solid white;
-}
-    </style>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/style.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial scale=1">
     </head>
     <body>
         <section id="banner">
-            <img src="images/img.png" class="logo">
+            <img src="img/CompanyLogo.png" class="logo">
             <div class="banner-text">
                 <h1>Your Local Tech Company</h1>
                 <p>Please choose one of the following...</p></div>
                 <div class="banner-btn">
                     <tr>
-                        <td><a href="home.html"><span></span>Home</a></td> <!--span används som div förutom att det handlar om inline ej block-->
-                        <td><a href="#"><span></span>About</a></td>
-                        <td><a href="#"><span></span>Testing</a></td>
+                        <td><a href="Smart_Offices.jsp"><span></span>Home</a></td> <!--span används som div förutom att det handlar om inline ej block-->
+                        <td><a href="SmartOfficeAbout.jsp"><span></span>About</a></td>
+                        <td><a href="SmartOfficeTest.jsp"><span></span>Testing</a></td>
+             
                     </tr>
                     </div>
         </section>

@@ -4,15 +4,7 @@
 <html lang="sv">
 <head>
 <title>Home Page building</title>
-<style>
-div {
-	width: auto;
-	text-align: center;
-	padding: 15px solid white;
-	border: 3px;
-	background-color: solid white;
-}
-</style>
+
 <link rel="stylesheet" href="css/style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -26,14 +18,14 @@ div {
 
 	<section id="topPic">
 
-		<div class="container"></div>
+	
 		<div class="textHeader">
 
 			<ul>
-				<li><a href="homebuilding.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="#">Testing</a></li>
-				<li><a href="index.html">Start</a></li>
+				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeAbout.jsp">About</a></li>
+				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
+				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
 			</ul>
 
 
@@ -96,8 +88,8 @@ div {
 	<div id="sidenav" style="display: none;">
 		<nav>
 			<ul>
-				<li><a href="home.html">Offices</a></li>
-				<li><a href="homebuilding.html">Buildings</a></li>
+				<li><a href="Smart_Offices.jsp">Offices</a></li>
+				<li><a href="SmartOfficeHome.jsp">Buildings</a></li>
 
 			</ul>
 		</nav>
