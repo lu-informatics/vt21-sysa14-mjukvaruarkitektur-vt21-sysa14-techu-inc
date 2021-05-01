@@ -104,7 +104,7 @@ function addRightClickMenu() {
                         },
                         success: function (data) {
                             var indexInt = parseInt(data.index) + 1;
-                            $('#content-table').deleteRow(indexInt)
+                            document.getElementById('content-table').deleteRow(indexInt)
                         },
                         error: function () {
                             alert("Error, please try again later")
@@ -167,6 +167,7 @@ function addUpdateListener() {
     }
     $("#updateOffice").click(onSubmitUpdate);
 }
+
 
 
 
