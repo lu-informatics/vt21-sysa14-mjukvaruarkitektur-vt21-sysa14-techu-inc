@@ -94,7 +94,7 @@
     overflow: hidden;
 }
 
-.content-table{
+#content-table{
     border-collapse: collapse;
     margin:25px 0;
     font-size: 0.9em;
@@ -108,7 +108,7 @@
     bottom: 120px;
 }
 
-.content-table thead tr{
+#content-table thead tr{
     background-color: rgb(255, 244, 219);
     color: orange;
     text-align: left;
@@ -116,17 +116,17 @@
     
 }
 
-.content-table th,
-.content-table td{
+#content-table th,
+#content-table td{
     padding:12px 15px;
 }
 
-.content-table tbody tr{
+#content-table tbody tr{
     border-bottom: 1px solid rgb(255, 244, 219);
 
 }
 
-.content-table tbody tr:last-of-type{
+#content-table tbody tr:last-of-type{
     border-bottom: 2px solid rgb(255, 244, 219);
 }
 
@@ -416,4 +416,27 @@ nav ul li a{
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
 	
+}
+
+#popup {
+display: none;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	background: rgba(184, 184, 184, 0.7);
+}
+#updateWindow {
+	display: flex;
+	width: 370px;
+	height: 388px;
+	margin: 10% auto;
+	padding: 10px;
+	position: relative;
+	background-color: white;
+	border: 2px solid;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }

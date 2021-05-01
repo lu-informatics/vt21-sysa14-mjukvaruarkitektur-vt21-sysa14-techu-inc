@@ -17,7 +17,7 @@
                 <p>Please choose one of the following...</p></div>
                 <div class="banner-btn">
                     <tr>
-                        <td><a href="SmartOfficeServlet?operation=viewHome"><span></span>Home</a></td>
+                        <td><a href="SmartOfficeServlet?operation=viewOffices"><span></span>Home</a></td>
                         <td><a href="SmartOfficeAbout.jsp"><span></span>About</a></td>
                         <td><a href="SmartOfficeTest.jsp"><span></span>Testing</a></td>
                     </tr>

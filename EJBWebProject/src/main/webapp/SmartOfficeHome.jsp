@@ -33,7 +33,6 @@
 
 
 		</div>
-		</div>
 		<div class="h1hometext" style="top: 45px;">
 			<h1>Buildings</h1>
 			<p>Choose between create, read, update or delete</p>
