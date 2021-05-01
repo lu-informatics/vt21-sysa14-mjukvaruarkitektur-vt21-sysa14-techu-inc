@@ -1,5 +1,11 @@
 $(document).ready(function() {
     getWeatherReport();
+    addRightClickMenu();
+    addUpdateListener();
+
+    $("#closeUpdate").click(function () {
+        document.getElementById("popup").style.display = 'none'
+    });
 
     //Get method to get all offices and create rows for them
     //getOffices();
@@ -83,5 +89,84 @@ function ParseJsonFileOfficeList(officeList) {
         addRow(officeList[i]);
     }
 }
+function addRightClickMenu() {
+    $(function () {
+        $('#content-table').contextMenu({
+            selector: 'tr',
+            callback: function (key, options) {
+                if (key == "delete") {
+                    $.post({
+                        url: 'SmartOfficeServlet',
+                        data: {
+                            operation: "DeleteOffice",
+                            officeNumber: $(this).find("td:first").text(),
+                            index: $(this).index(),
+                        },
+                        success: function (data) {
+                            var indexInt = parseInt(data.index) + 1;
+                            $('#content-table').deleteRow(indexInt)
+                        },
+                        error: function () {
+                            alert("Error, please try again later")
+                        }
+                    }); //Delete function end
+                } else if (key == "edit") {
+
+                    $.get({
+                        url: 'SmartOfficeServlet',
+                        data: {
+                            operation: "findOffice",
+                            officeNumber: $(this).find("td:first").text()
+                        },
+                        success: function (data) {
+                            if (data.astronaut == false) {
+                                alert("Office does not exist.");
+                                location.reload(true);
+                            }
+                        },
+                        error: function () {
+                            alert("Error, please try again later")
+                        }
+                    });
+                    document.getElementById("popup").style.display = 'block',
+                        $('#building').val($(this).find("td:eq(1)").text());
+                    $('#temperatureSetting').val($(this).find("td:eq(2)").text());
+                    $('#ventilationSetting').val($(this).find("td:eq(3)").text());
+                    $('#idLabel').text(($(this).find("td:eq(0)").text()));
+                }
+            },
+            items: {
+                "edit": { name: "Edit", icon: "edit" },
+                "delete": { name: "Delete", icon: "delete" },
+                "sep1": "---------",
+                "quit": { name: "Close", icon: function ($element, key, item) { return 'context-menu-icon context-menu-icon-quit'; } }
+            }
+        });
+    });
+}//Add right click menu finished
+function addUpdateListener() {
+    function onSubmitUpdate(event) {
+        event.preventDefault()
+        $.post({
+            url: 'SmartOfficeServlet',
+            data: {
+                operation: "updateOffice",
+                officeNumber: $('#idLabel').text(),
+                buildingAddress: $('#building').val(),
+                temperatureSetting: $('#temperatureSetting').val(),
+                ventilationSetting: $('#ventilationSetting').val()
+            },
+            success: function (data) {
+                location.reload(true);
+            },
+            error: function (status) {
+                console.log("UPDATE ASTRONAUT ERROR " + status);
+                alert("Error, please try again later")
+            }
+        });
+    }
+    $("#updateOffice").click(onSubmitUpdate);
+}
+
 
 

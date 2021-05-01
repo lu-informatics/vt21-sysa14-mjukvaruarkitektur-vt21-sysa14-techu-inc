@@ -113,8 +113,10 @@ public class SmartOfficeServlet extends HttpServlet {
 			rd.forward(request, response);
 		} else if ("viewOffices".equals(operation)) {
 			List<Office> offices = facade.getAllOffices();
+			List<Building> buildings = facade.getAllBuildings();
 
 			request.setAttribute("offices", offices);
+			request.setAttribute("buildings", buildings);
 
 			RequestDispatcher rd = sc.getRequestDispatcher("/Smart_Offices.jsp");
 			rd.forward(request, response);
@@ -190,6 +192,7 @@ public class SmartOfficeServlet extends HttpServlet {
 			} else if (operation.equals("updateOffice")) { // Update office (kind of finished)
 
 				Office o = facade.findByOfficeNumber(request.getParameter("officeNumber"));
+				o.setBuilding(facade.findByAddress(request.getParameter("buildingAddress")));
 				o.setTemperatureSetting(Integer.parseInt(request.getParameter("temperatureSetting")));
 				o.setVentilationSetting(request.getParameter("ventilationSetting"));
 
