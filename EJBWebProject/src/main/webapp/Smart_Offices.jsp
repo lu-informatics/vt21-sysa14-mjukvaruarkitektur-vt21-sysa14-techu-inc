@@ -121,11 +121,23 @@ div {
 						}
 					%>
 					</select>
-				<label for="temperatureSetting">Temperature Setting:</label>
-				<input type="text" id="temperatureSetting" name="temperatureSetting"> 
+					<br>
+				<label for="temperatureSetting">Temperature Setting:</label> 
+				<label id="temperatureSettingLabel"></label>
+				<input type="range" min="16" max="25" class="slider" id="temperatureSetting">
+				<br>
 				<label for="ventilationSetting">Ventilation Setting:</label>
-				<input type="text" id="ventilationSetting" name="ventilationSetting">
-				
+				<select
+					id="ventilationSetting">
+					<%
+					for (int i = 0; i < ventilationSettingList.length; i += 1) {
+					%>
+					<option><%=ventilationSettingList[i]%></option>
+					<%
+					}
+					%>
+				</select>
+				<br>
 				<input id="updateOffice" type="submit" value="Update Office"></input>
 			</form>
 			<input type="button" id="closeUpdate" value="Close">

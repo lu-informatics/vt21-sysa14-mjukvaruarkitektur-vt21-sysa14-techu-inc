@@ -133,9 +133,11 @@ function addRightClickMenu() {
                     });
                     document.getElementById("popup").style.display = 'block',
                         $('#building').val($(this).find("td:eq(1)").text());
-                    $('#temperatureSetting').val($(this).find("td:eq(2)").text());
+                    $('#temperatureSetting').val(parseInt($(this).find("td:eq(2)").text()));
                     $('#ventilationSetting').val($(this).find("td:eq(3)").text());
                     $('#idLabel').text(($(this).find("td:eq(0)").text()));
+                    $('#temperatureSettingLabel').text(($(this).find("td:eq(2)").text()) + " \u2103");
+                    
                 }
             },
             items: {
@@ -192,7 +194,7 @@ function addAddListener() {
         });
     }
     $("#addOfficeForm").submit(onSubmit);
-}
+}//Add post method
 
 function addAddClickListener() {
     $("#flip").click(function () {
@@ -209,6 +211,16 @@ function displayTemperatureValue() {
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function () {
             output.innerHTML = this.value + " \u2103";
+        }
+    }
+
+    var sliderUpdate = document.getElementById("temperatureSetting");
+    var outputUpdate = document.getElementById("temperatureSettingLabel");
+    if (outputUpdate != null && sliderUpdate != null) {
+        outputUpdate.innerHTML = sliderUpdate.value + " \u2103"; // Display the default slider value
+        // Update the current slider value (each time you drag the slider handle)
+        sliderUpdate.oninput = function () {
+            outputUpdate.innerHTML = this.value + " \u2103";
         }
     }
 }
