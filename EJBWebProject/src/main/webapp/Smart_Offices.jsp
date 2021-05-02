@@ -78,14 +78,15 @@ div {
 		List<Office> list = (List<Office>) request.getAttribute("offices");
 		List<Building> buildingList = (List<Building>) request.getAttribute("buildings");
 		%>
-
+		
+		
 		<table id="content-table" style="top: -85px;">
 			<thead>
 				<tr>
-					<th>OfficeNumber</th>
-					<th>BuildingAddress</th>
-					<th>TemperatureSetting</th>
-					<th>VentilationSetting</th>
+					<td>OfficeNumber</td>
+					<td>BuildingAddress</td>
+					<td>TemperatureSetting</td>
+					<td>VentilationSetting</td>
 				</tr>
 			</thead>
 			<tbody id="tableBodyOffice">

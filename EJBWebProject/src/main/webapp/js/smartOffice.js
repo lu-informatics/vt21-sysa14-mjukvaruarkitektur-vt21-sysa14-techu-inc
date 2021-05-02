@@ -2,6 +2,7 @@ $(document).ready(function() {
     getWeatherReport();
     addRightClickMenu();
     addUpdateListener();
+    addAddClickListener();
 
     $("#closeUpdate").click(function () {
         document.getElementById("popup").style.display = 'none'
@@ -166,6 +167,12 @@ function addUpdateListener() {
         });
     }
     $("#updateOffice").click(onSubmitUpdate);
+}
+function addAddClickListener() {
+    $("#flip").click(function () {
+        $("#panel").slideToggle("slow");
+        document.getElementById("panel").style.display = 'flex'
+    });
 }
 
 
