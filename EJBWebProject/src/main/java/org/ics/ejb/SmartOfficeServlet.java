@@ -12,6 +12,7 @@ import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
+import javax.json.JsonValue;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -104,14 +105,14 @@ public class SmartOfficeServlet extends HttpServlet {
 			RequestDispatcher rd = sc.getRequestDispatcher("/SmartOfficeAbout.jsp");
 			rd.forward(request, response);
 
-		} else if (operation == null || "viewHome".equals(operation)) {
+		} else if ("viewBuildings".equals(operation)) {
 			List<Building> buildings = facade.getAllBuildings();
 
 			request.setAttribute("buildings", buildings);
 
 			RequestDispatcher rd = sc.getRequestDispatcher("/SmartOfficeHome.jsp");
 			rd.forward(request, response);
-		} else if ("viewOffices".equals(operation)) {
+		} else if (operation == null || "viewOffices".equals(operation)) {
 			List<Office> offices = facade.getAllOffices();
 			List<Building> buildings = facade.getAllBuildings();
 
@@ -162,18 +163,19 @@ public class SmartOfficeServlet extends HttpServlet {
 				o.setTemperatureSetting(temperatureSetting);
 				o.setBuilding(b);
 
-				facade.createOffice(o);
+				o = facade.createOffice(o);
+				String parsedOfficeNumber = parseOfficeNumber(o.getOfficeNumber());
 
 				JsonObject value = Json.createObjectBuilder()
-						.add("officeNumber", o.getOfficeNumber())
+						.add("officeNumber", parsedOfficeNumber)
 						.add("ventilationSetting", o.getVentilationSetting())
 						.add("temperatureSetting", o.getTemperatureSetting())
-						.add("building", o.getBuilding().getAddress()).build();
+						.add("buildingAddress", o.getBuilding().getAddress()).build();
 
 				response.setContentType("application/json");
 
 				PrintWriter out = response.getWriter();
-
+				
 				out.print(value.toString());
 				out.flush();
 
@@ -215,5 +217,29 @@ public class SmartOfficeServlet extends HttpServlet {
 		} catch (Exception e) {
 			// Do something
 		}
+	}
+
+	private String parseOfficeNumber(String officeIDNumberAsString) {
+		//O000535
+		int officeIDNumber = Integer.parseInt(officeIDNumberAsString);
+		String officeNumber = "O";
+		if (officeIDNumber<10) {
+			officeNumber+="00000"  + officeIDNumber;
+		} else if (officeIDNumber<100) {
+			officeNumber+= "0000"  + officeIDNumber;
+		}
+		else if (officeIDNumber<1000) {
+			officeNumber+="000"  + officeIDNumber;
+		}
+		else if (officeIDNumber<10000) {
+			officeNumber+="00"  + officeIDNumber;
+		}
+		else if (officeIDNumber<100000) {
+			officeNumber+="0"  + officeIDNumber;
+		}
+		else if (officeIDNumber<1000000) {
+			officeNumber+=officeNumber;
+		}
+		return officeNumber;
 	}
 }

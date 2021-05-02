@@ -62,12 +62,12 @@
 		<% List<Building> buildingList = (List<Building>) request.getAttribute("buildings"); %>
 		
 		<table class="content-table" style="left: 35%; top: -85px">
-			<thead>
+			<thead id="tableHeadBuilding">
 				<tr>
-					<th style="text-align: center;">Address</th>
+					<td style="text-align: center;">Address</td>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="tableBodyBuilding">
 				<%
 					for (int i = 0; i < buildingList.size(); i += 1) {
 				%>

@@ -77,11 +77,12 @@ div {
 		<%
 		List<Office> list = (List<Office>) request.getAttribute("offices");
 		List<Building> buildingList = (List<Building>) request.getAttribute("buildings");
+		String[] ventilationSettingList = new String[]{"V1", "V2", "V3", "V4", "V5"};
 		%>
 		
 		
-		<table id="content-table" style="top: -85px;">
-			<thead>
+		<table id="tableOffice" class="content-table" style="top: -85px;">
+			<thead id="tableHeadOffice">
 				<tr>
 					<td>OfficeNumber</td>
 					<td>BuildingAddress</td>
@@ -107,38 +108,81 @@ div {
 		
 		<div id="popup">
 		<div id="updateWindow">
-			<label id="office">Office Number:</label> <label id="idLabel"></label>
+			<label id="office">Office Number:</label>
+			<label id="idLabel"></label>
 			<form id="updateOfficeForm">
 			<label for="building">Building: </label> 
 					<select id="building">
 					<%
 						for (int i = 0; i < buildingList.size(); i += 1) {
 					%>
-
 						<option><%=buildingList.get(i).getAddress()%></option>
-
 					<%
 						}
 					%>
 					</select>
-				<label for="temperatureSetting">Temperature Setting:</label>
-				<input type="text" id="temperatureSetting" name="temperatureSetting"> 
+					<br>
+				<label for="temperatureSetting">Temperature Setting:</label> 
+				<label id="temperatureSettingLabel"></label>
+				<input type="range" min="16" max="25" class="slider" id="temperatureSetting">
+				<br>
 				<label for="ventilationSetting">Ventilation Setting:</label>
-				<input type="text" id="ventilationSetting" name="ventilationSetting">
-				
+				<select
+					id="ventilationSetting">
+					<%
+					for (int i = 0; i < ventilationSettingList.length; i += 1) {
+					%>
+					<option><%=ventilationSettingList[i]%></option>
+					<%
+					}
+					%>
+				</select>
+				<br>
 				<input id="updateOffice" type="submit" value="Update Office"></input>
 			</form>
 			<input type="button" id="closeUpdate" value="Close">
 		</div>
 	</div>
+	
+	<div id="flip">Add an office.</div>
+		<div id="panel">
+			<form id="addOfficeForm">
+				<label for="buildingAdd">Building Address: </label>
+				<select
+					id="buildingAdd">
+					<%
+					for (int i = 0; i < buildingList.size(); i += 1) {
+					%>
+					<option><%=buildingList.get(i).getAddress()%></option>
+					<%
+					}
+					%>
+				</select>
+				<label for="temperatureSettingAdd">Temperature Setting:</label> 
+				<label id="temperatureSettingAddLabel"></label>
+				<input type="range" min="16" max="25" value="20" class="slider" id="temperatureSettingAdd">
+				<label for="ventilationSettingAdd">Ventilation Setting:</label>
+				<select
+					id="ventilationSettingAdd">
+					<%
+					for (int i = 0; i < ventilationSettingList.length; i += 1) {
+					%>
+					<option><%=ventilationSettingList[i]%></option>
+					<%
+					}
+					%>
+				</select>
+				<input id="addOffice" class="button" type="submit" value="Add Office"></input>
+			</form>
+		</div>
 		
 	</section>
 	
 	<div id="sidenav" style="display: none;">
 		<nav>
 			<ul>
-				<li><a href="Smart_Offices.jsp">Offices</a></li>
-				<li><a href="SmartOfficeHome.jsp">Buildings</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewOffices">Offices</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewBuildings">Buildings</a></li>
 
 			</ul>
 		</nav>
