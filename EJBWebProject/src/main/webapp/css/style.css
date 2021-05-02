@@ -152,6 +152,22 @@ and their jsFiddle post on this link: http://jsfiddle.net/ogcbuwjL/
 
 }
 
+#panel, #flip {
+	font-family: 'PT-Sans', sans-serif;
+	padding: 10px;
+	text-align: center;
+	background-color: #e5eecc;
+	border: solid 1px #c3c3c3;
+	cursor: pointer;
+}
+
+#panel {
+	padding: 25px;
+	display: none;
+	justify-content: center;
+
+}
+
 /* #content-table {
     border-collapse: collapse;
     margin:25px 0;
