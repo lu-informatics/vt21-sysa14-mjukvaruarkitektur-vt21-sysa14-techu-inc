@@ -3,6 +3,7 @@ package org.ics.ejb;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,8 +24,10 @@ public class DummyDataServlet extends HttpServlet {
 	@EJB
 	FacadeLocal facade;
 	
+	ThreadLocalRandom randomizer = ThreadLocalRandom.current();
+	
 	public int getRandomNumber(int min, int max) {
-	    return (int) ((Math.random() * (max - min)) + min);
+	    return randomizer.nextInt(min, max+1);
 	}
        
     /**
