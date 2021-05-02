@@ -1,8 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
     getWeatherReport();
     addRightClickMenu();
     addUpdateListener();
     addAddClickListener();
+    displayTemperatureValue();
+    addAddListener();
 
     $("#closeUpdate").click(function () {
         document.getElementById("popup").style.display = 'none'
@@ -10,11 +12,11 @@ $(document).ready(function() {
 
     //Get method to get all offices and create rows for them
     //getOffices();
-    
+
 });//End document ready function
 
 //Adds a new row with an office object
-function addRow({ officeNumber, buildingAddress, temperatureSetting, ventilationSetting }) {
+function addRow({officeNumber, buildingAddress, temperatureSetting, ventilationSetting}) {
     $("#tableBodyOffice").
         append($('<tr>')
             .append($('<td>').text(officeNumber))
@@ -74,7 +76,7 @@ function getOffices() {
     $.ajax({
         method: "GET",
         url: "SmartOfficeServlet",
-        data: {operation: "viewOffices"},
+        data: { operation: "viewOffices" },
         error: ajaxReturn_Error,
         success: ajaxReturn_Success
     })
@@ -120,7 +122,7 @@ function addRightClickMenu() {
                             officeNumber: $(this).find("td:first").text()
                         },
                         success: function (data) {
-                            if (data.astronaut == false) {
+                            if (data.office == false) {
                                 alert("Office does not exist.");
                                 location.reload(true);
                             }
@@ -161,18 +163,54 @@ function addUpdateListener() {
                 location.reload(true);
             },
             error: function (status) {
-                console.log("UPDATE ASTRONAUT ERROR " + status);
+                console.log("UPDATE OFFICE ERROR " + status);
                 alert("Error, please try again later")
             }
         });
     }
     $("#updateOffice").click(onSubmitUpdate);
+}//Update post method
+function addAddListener() {
+    function onSubmit(event) {
+        event.preventDefault()
+        $.post({
+            url: 'SmartOfficeServlet',
+            data: {
+                operation: "AddOffice",
+                buildingAddress: $('#buildingAdd').val(),
+                ventilationSetting: $('#ventilationSettingAdd').val(),
+                temperatureSetting: $('#temperatureSettingAdd').val()
+            },
+            success: function (data) {
+                addRow(data);
+                document.getElementById("addOfficeForm").reset();
+            },
+            error: function (status) {
+                console.log("UPDATE OFFICE ERROR " + status.text);
+                alert("Error, please try again later")
+            }
+        });
+    }
+    $("#addOfficeForm").submit(onSubmit);
 }
+
 function addAddClickListener() {
     $("#flip").click(function () {
         $("#panel").slideToggle("slow");
         document.getElementById("panel").style.display = 'flex'
     });
+}
+
+function displayTemperatureValue() {
+    var slider = document.getElementById("temperatureSettingAdd");
+    var output = document.getElementById("temperatureSettingAddLabel");
+    if (output != null && slider != null) {
+        output.innerHTML = slider.value + " \u2103"; // Display the default slider value
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function () {
+            output.innerHTML = this.value + " \u2103";
+        }
+    }
 }
 
 
