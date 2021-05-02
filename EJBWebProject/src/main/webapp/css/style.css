@@ -94,18 +94,74 @@
     overflow: hidden;
 }
 
-#content-table{
+/*
+Scrollable table, credit goes to Rampant Creative Group on a StackOverflow
+comment https://stackoverflow.com/questions/14834198/table-scroll-with-html-and-css
+and their jsFiddle post on this link: http://jsfiddle.net/ogcbuwjL/ 
+*/
+#content-table {
+	border-collapse: collapse;
+    margin:25px 0;
+    font-size: 0.9em;
+    background-color: #aaa;
+    width: 600px;
+     border-radius: 5px 5px 5px 5px;
+    box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
+    position: relative;
+    left: 30%;
+    background-color: white;
+    
+}
+#content-table tbody {
+    height: 400px;
+    overflow: auto;
+    
+}
+
+#content-table thead tr td {
+    padding: 12px 15px;
+    display: inline-block;
+    width: 24%;
+    box-sizing: border-box;
+}
+#content-table tbody tr td {
+    padding: 12px 15px;
+    display: inline-block;
+    width: 25%;
+    box-sizing: border-box;
+}
+#content-table tbody tr td:last-of-type {
+    padding: 3px 10px;
+    display: inline-block;
+    width: 21%;
+    box-sizing: border-box;
+}
+
+#content-table tbody tr, #content-table tbody, #content-table thead tr{
+    display:block;
+}
+#content-table thead tr{
+    background-color: rgb(255, 244, 219);
+    color: orange;
+    text-align: left;
+    font-weight: bold;
+    
+}
+#content-table tbody tr{
+    border-bottom: 1px solid rgb(255, 244, 219);
+
+}
+
+/* #content-table {
     border-collapse: collapse;
     margin:25px 0;
     font-size: 0.9em;
     min-width: 400px;
     border-radius: 5px 5px 5px 5px;
-    overflow: hidden;
     box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
     position: relative;
     left: 30%;
     background-color: white;
-    bottom: 120px;
 }
 
 #content-table thead tr{
@@ -116,9 +172,8 @@
     
 }
 
-#content-table th,
-#content-table td{
-    padding:12px 15px;
+#content-table th, #content-table td {
+	padding: 12px 15px;
 }
 
 #content-table tbody tr{
@@ -128,7 +183,7 @@
 
 #content-table tbody tr:last-of-type{
     border-bottom: 2px solid rgb(255, 244, 219);
-}
+} */
 
 
 .textHeader ul{
