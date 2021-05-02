@@ -81,7 +81,7 @@ div {
 		%>
 		
 		
-		<table class="content-tableOffice" style="top: -85px;">
+		<table id="tableOffice" class="content-table" style="top: -85px;">
 			<thead id="tableHeadOffice">
 				<tr>
 					<td>OfficeNumber</td>

@@ -94,7 +94,7 @@ function ParseJsonFileOfficeList(officeList) {
 }
 function addRightClickMenu() {
     $(function () {
-        $('#content-table').contextMenu({
+        $('#tableOffice').contextMenu({
             selector: 'tr',
             callback: function (key, options) {
                 if (key == "delete") {
@@ -107,7 +107,7 @@ function addRightClickMenu() {
                         },
                         success: function (data) {
                             var indexInt = parseInt(data.index) + 1;
-                            document.getElementById('content-table').deleteRow(indexInt)
+                            document.getElementById('tableOffice').deleteRow(indexInt)
                         },
                         error: function () {
                             alert("Error, please try again later")
