@@ -40,7 +40,7 @@ div {
 		<div class="textHeader">
 
 			<ul>
-				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewOffices">Home</a></li>
 				<li><a href="SmartOfficeAbout.jsp">About</a></li>
 				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
 				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
@@ -158,9 +158,11 @@ div {
 					}
 					%>
 				</select>
+				<br>
 				<label for="temperatureSettingAdd">Temperature Setting:</label> 
 				<label id="temperatureSettingAddLabel"></label>
 				<input type="range" min="16" max="25" value="20" class="slider" id="temperatureSettingAdd">
+				<br>
 				<label for="ventilationSettingAdd">Ventilation Setting:</label>
 				<select
 					id="ventilationSettingAdd">
@@ -172,6 +174,7 @@ div {
 					}
 					%>
 				</select>
+				<br>
 				<input id="addOffice" class="button" type="submit" value="Add Office"></input>
 			</form>
 		</div>
@@ -190,6 +193,19 @@ div {
 	<div id="menuBtn">
 		<img src="img/white-menu-icon-0.jpg" id="menu">
 	</div>
+
+	<footer class="footer">
+		<ul>
+			<li class="one">We are a small IT company that wants to make
+				life easier for you</li>
+			<li class="two">For more information please contact us at:
+				TechnologicalUnemployment@live.se</li>
+			<li class="three">&copy;All Right Reserved to Technological
+				Unemployment 2021</li>
+		</ul>
+	</footer>
+
+
 	<script>
 		var menuBtn = document.getElementById("menuBtn")
 		var sidenav = document.getElementById("sidenav")
@@ -205,5 +221,6 @@ div {
 	</script>
 
 </body>
+
 
 </html>
