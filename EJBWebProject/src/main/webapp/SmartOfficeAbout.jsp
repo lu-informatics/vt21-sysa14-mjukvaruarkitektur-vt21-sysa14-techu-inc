@@ -17,14 +17,13 @@
 		<div class="textHeader">
 
 			<ul>
-				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewOffices">Home</a></li>
 				<li><a href="SmartOfficeAbout.jsp">About</a></li>
 				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
 				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
 			</ul>
 
 
-		</div>
 		</div>
 		<div class="contentAbout">
 			<h2>About us</h2>
@@ -44,5 +43,12 @@
 		</div>
 
 	</section>
+	<footer class="footer">
+       <ul>
+             <li class="one">We are a small IT company that wants to make life easier for you</li>
+            <li class="two">For more information please contact us at: TechnologicalUnemployment@live.se</li>
+       <li class="three">&copy;All Right Reserved to Technological Unemployment 2021</li>
+       </ul>
+    </footer>
 </body>
 </html>

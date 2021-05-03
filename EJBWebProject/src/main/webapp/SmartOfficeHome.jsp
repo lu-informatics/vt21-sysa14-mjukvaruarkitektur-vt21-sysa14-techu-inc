@@ -25,7 +25,7 @@
 		<div class="textHeader">
 
 			<ul>
-				<li><a href="Smart_Offices.jsp">Home</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewOffices">Home</a></li>
 				<li><a href="SmartOfficeAbout.jsp">About</a></li>
 				<li><a href="SmartOfficeTest.jsp">Testing</a></li>
 				<li><a href="SmartOfficeIndex.jsp">Start</a></li>
@@ -35,7 +35,6 @@
 		</div>
 		<div class="h1hometext" style="top: 45px;">
 			<h1>Buildings</h1>
-			<p>Choose between create, read, update or delete</p>
 		</div>
 
 		<nav class="weathernav">
@@ -80,11 +79,12 @@
 			</tbody>
 		</table>
 	</section>
+	
 	<div id="sidenav" style="display: none;">
 		<nav>
 			<ul>
 				<li><a href="SmartOfficeServlet?operation=viewOffices">Offices</a></li>
-				<li><a href="SmartOfficeServlet?operation=viewHome">Buildings</a></li>
+				<li><a href="SmartOfficeServlet?operation=viewBuildings">Buildings</a></li>
 
 			</ul>
 		</nav>
@@ -92,6 +92,14 @@
 	<div id="menuBtn">
 		<img src="img/white-menu-icon-0.jpg" id="menu">
 	</div>
+	
+	<footer class="footer">
+       <ul>
+             <li class="one">We are a small IT company that wants to make life easier for you</li>
+            <li class="two">For more information please contact us at: TechnologicalUnemployment@live.se</li>
+       <li class="three">&copy;All Right Reserved to Technological Unemployment 2021</li>
+       </ul>
+    </footer>
 	<script>
 	var menuBtn = document.getElementById("menuBtn")
 	var sidenav = document.getElementById("sidenav")
@@ -100,8 +108,7 @@
 		sidenav.style.display = "block";
 		if (sidenav.style.right == "-250px") {
 			sidenav.style.right = "0";
-		}
-		else {
+		} else {
 			sidenav.style.right = "-250px";
 		}
 	}

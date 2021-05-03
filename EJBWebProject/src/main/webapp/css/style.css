@@ -54,7 +54,9 @@
     color: rgb(240, 167, 33);
     border:1.5px solid rgb(240, 167, 33);
     position: relative;
+    left: 30%;
     z-index: 1;
+    text-align: center;
 
 }
 .banner-btn a span{
@@ -78,13 +80,31 @@
 .footer{
     color: black;
     background: rgb(255, 244, 219);
-    height: 200px;
+    height: 100px;
     bottom: 0%;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.footer .one{
+    color: rgb(99, 93, 93);
+    font-size: larger;
+    font-weight: bolder;
+    
 }
 
-.footer .p{
+.footer .two{
+
+padding-top: 3px;
+color: rgb(99, 93, 93);
+
+font-size: 16.5px;
+}
+
+.footer .three{
+   
     color: rgb(99, 93, 93);
-    
+    padding-top: 25px;
+
 }
 #topPic{
     background: linear-gradient(rgba(0, 0, 0, 0.5),#fed8b1),url(buildings-865292_1920.jpg);
@@ -101,15 +121,16 @@ and their jsFiddle post on this link: http://jsfiddle.net/ogcbuwjL/
 */
 .content-table {
 	border-collapse: collapse;
-    margin:25px 0;
+    margin: 25px 0;
     font-size: 0.9em;
     background-color: #aaa;
     width: 600px;
-     border-radius: 5px 5px 5px 5px;
     box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
     position: relative;
-    left: 30%;
+    left: 35%;
     background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
     
 }
 .content-table tbody {
@@ -164,21 +185,28 @@ and their jsFiddle post on this link: http://jsfiddle.net/ogcbuwjL/
     box-sizing: border-box;
 }
 
-
 #panel, #flip {
-	font-family: 'PT-Sans', sans-serif;
-	padding: 10px;
+	position: relative;	
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	bottom: 105px;
 	text-align: center;
-	background-color: #e5eecc;
-	border: solid 1px #c3c3c3;
+	background-color: rgb(255, 244, 219);
 	cursor: pointer;
+	width: 600px;
+	display: block;
+	left: 35%;
+	box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
 }
-
+#flip {
+	border-radius: 5px 5px 0px 0px;
+}
 #panel {
-	padding: 25px;
-	display: none;
-	justify-content: center;
-
+	border-radius: 0px 0px 5px 5px;
+}
+.context-menu-list {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* .content-table{
@@ -279,7 +307,7 @@ and their jsFiddle post on this link: http://jsfiddle.net/ogcbuwjL/
 
 #sidenav{
     width:150px;
-    height: 60vh;
+    height: 35vh;
     position: fixed;
     right: 0;
     top: 90px;
@@ -288,15 +316,14 @@ and their jsFiddle post on this link: http://jsfiddle.net/ogcbuwjL/
     transition: 0.5s;
     box-shadow: black;
     border-radius: 10px 10px 10px 10px;
+    text-align: center;
   
     
 }
 
 nav ul li{
     list-style: none;
-    margin: 20px 20px;
-    margin-top: 40px;
-    padding-top: 60px;
+    margin: 90px 20px 90px;
     
 }
 
@@ -375,11 +402,11 @@ nav ul li a{
 	top: 25%;
 	text-align: center;
 	background: rgba(0, 0, 0, 0.5);
-	width: 50%;
-	height: 65%;
+	width: 40%;
 	position: relative;
-	left: 25%;
+	left: 28%;
 	border-radius: 5px 5px 5px 5px;
+	padding: 20px;
 }
 
 .contentAbout h2 {
@@ -388,7 +415,6 @@ nav ul li a{
 	color: rgb(197, 197, 197);
 	letter-spacing: 2px;
 	font-weight: bolder;
-	padding-top: 25px;
 }
 
 .contentAbout span {
@@ -396,11 +422,9 @@ nav ul li a{
 	font-size: 17.5px;
 	letter-spacing: 0.5px;
 	color: white;
-	padding-left: 5px;
 	margin-top: 45px;
 	font-weight: bold;
-	position: relative;
-	bottom: 4%;
+	position: relative;	
 }
 
 .contentAbout p {
@@ -409,14 +433,10 @@ nav ul li a{
 	color: white;
 	padding-top: 5px;
 	letter-spacing: 0.5px;
-	padding-left: 5px;
 	font-weight: normal;
 	text-align: center;
 	justify-content: center;
-	margin-left: 25px;
-	margin-right: 25px;
 	position: relative;
-	bottom: 2%;
 }
 
 #asideTable {
@@ -426,10 +446,10 @@ nav ul li a{
    background:rgba(0, 0, 0, 0.5);
    border-radius: 5px 5px 5px 5px;
     position: relative;
-    left: 5%;
+    left: 15%;
     top: 90px;
     height: 150px;
-    width: 50vh;    
+    width: 35vh;    
 }
 
 #asideTable td {
@@ -487,19 +507,26 @@ nav ul li a{
 
 #youPickItForm{
 	position: relative;
-    left: 60vh;
+    left: 42%;
     top: 15vh
 }
 
 #btnTest {
 	position: relative;
-    left: -20vh;
+    left: -25vh;
     top: 10vh;
 	font-size: 3vh;
 	padding: 14px 40px;
 	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
 	
+}
+
+#addOffice, #closeUpdate, #updateOffice {
+	padding: 14px 40px;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	margin-top: 3px;
 }
 
 #popup {
@@ -516,11 +543,13 @@ display: none;
 	width: 370px;
 	height: 388px;
 	margin: 10% auto;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 20px 20px 20px rgba(0,0,0,0.15);
 	padding: 10px;
 	position: relative;
-	background-color: white;
-	border: 2px solid;
+	background-color: rgb(255, 244, 219);
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

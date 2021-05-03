@@ -2,7 +2,6 @@ $(document).ready(function () {
     getWeatherReport();
     addRightClickMenu();
     addUpdateListener();
-    addAddClickListener();
     displayTemperatureValue();
     addAddListener();
 
@@ -195,13 +194,6 @@ function addAddListener() {
     }
     $("#addOfficeForm").submit(onSubmit);
 }//Add post method
-
-function addAddClickListener() {
-    $("#flip").click(function () {
-        $("#panel").slideToggle("slow");
-        document.getElementById("panel").style.display = 'flex'
-    });
-}
 
 function displayTemperatureValue() {
     var slider = document.getElementById("temperatureSettingAdd");
